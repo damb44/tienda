@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEmpresaProveedorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEmpresaProveedorLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{empresaProveedorController.selected.id}" title="#{bundle.EditEmpresaProveedorTitle_id}" required="true" requiredMessage="#{bundle.EditEmpresaProveedorRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditEmpresaProveedorLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{empresaProveedorController.selected.nombre}" title="#{bundle.EditEmpresaProveedorTitle_nombre}" required="true" requiredMessage="#{bundle.EditEmpresaProveedorRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditEmpresaProveedorLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{empresaProveedorController.selected.direccion}" title="#{bundle.EditEmpresaProveedorTitle_direccion}" required="true" requiredMessage="#{bundle.EditEmpresaProveedorRequiredMessage_direccion}"/>
+                    <h:outputLabel value="#{bundle.EditEmpresaProveedorLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{empresaProveedorController.selected.telefono}" title="#{bundle.EditEmpresaProveedorTitle_telefono}" required="true" requiredMessage="#{bundle.EditEmpresaProveedorRequiredMessage_telefono}"/>
+                    <h:outputLabel value="#{bundle.EditEmpresaProveedorLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{empresaProveedorController.selected.email}" title="#{bundle.EditEmpresaProveedorTitle_email}" />
+                </h:panelGrid>
+                <h:commandLink action="#{empresaProveedorController.update}" value="#{bundle.EditEmpresaProveedorSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEmpresaProveedorViewLink}"/>
+                <br />
+                <h:commandLink action="#{empresaProveedorController.prepareList}" value="#{bundle.EditEmpresaProveedorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEmpresaProveedorIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

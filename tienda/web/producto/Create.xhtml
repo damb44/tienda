@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProductoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProductoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{productoController.selected.id}" title="#{bundle.CreateProductoTitle_id}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateProductoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{productoController.selected.nombre}" title="#{bundle.CreateProductoTitle_nombre}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateProductoLabel_fechaVenc}" for="fechaVenc" />
+                    <h:inputText id="fechaVenc" value="#{productoController.selected.fechaVenc}" title="#{bundle.CreateProductoTitle_fechaVenc}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_fechaVenc}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateProductoLabel_stock}" for="stock" />
+                    <h:inputText id="stock" value="#{productoController.selected.stock}" title="#{bundle.CreateProductoTitle_stock}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_stock}"/>
+                    <h:outputLabel value="#{bundle.CreateProductoLabel_precioVenta}" for="precioVenta" />
+                    <h:inputText id="precioVenta" value="#{productoController.selected.precioVenta}" title="#{bundle.CreateProductoTitle_precioVenta}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_precioVenta}"/>
+                    <h:outputLabel value="#{bundle.CreateProductoLabel_idCategoria}" for="idCategoria" />
+                    <h:selectOneMenu id="idCategoria" value="#{productoController.selected.idCategoria}" title="#{bundle.CreateProductoTitle_idCategoria}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_idCategoria}">
+                        <f:selectItems value="#{categoriaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProductoLabel_idMarca}" for="idMarca" />
+                    <h:selectOneMenu id="idMarca" value="#{productoController.selected.idMarca}" title="#{bundle.CreateProductoTitle_idMarca}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_idMarca}">
+                        <f:selectItems value="#{marcaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProductoLabel_idProveedor}" for="idProveedor" />
+                    <h:selectOneMenu id="idProveedor" value="#{productoController.selected.idProveedor}" title="#{bundle.CreateProductoTitle_idProveedor}" required="true" requiredMessage="#{bundle.CreateProductoRequiredMessage_idProveedor}">
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{productoController.create}" value="#{bundle.CreateProductoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{productoController.prepareList}" value="#{bundle.CreateProductoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProductoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
